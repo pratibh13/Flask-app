@@ -1,0 +1,6 @@
+flask
+flask-restx
+flask-mysqldb
+pytest
+requests
+flask_sqlalchemy
