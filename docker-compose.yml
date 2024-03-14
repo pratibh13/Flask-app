@@ -1,0 +1,39 @@
+version: '3.8'
+ 
+services:
+  flask_app:
+    image: pratibhgoshi/flask-app:latest
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./app:/app
+    environment:
+      - FLASK_ENV=development
+      - SQLALCHEMY_DATABASE_URI=mysql://root:root@db/projects
+      - SQLALCHEMY_TRACK_MODIFICATIONS=False
+    depends_on:
+      - mysql
+    networks:
+      - my_network
+ 
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: projects
+      MYSQL_USER: pratibh
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - my_network
+    container_name: db
+ 
+networks:
+  my_network:
+ 
+volumes:
+  mysql_data:
