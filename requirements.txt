@@ -4,3 +4,4 @@ flask-mysqldb
 pytest
 requests
 flask_sqlalchemy
+waitress
