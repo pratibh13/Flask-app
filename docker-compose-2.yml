@@ -1,0 +1,22 @@
+version: '3.8'
+ 
+services:
+
+  flask_app:
+    image: rahul1181/flask-app:latest
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./app:/app
+    environment:
+      - FLASK_ENV=development
+      - SQLALCHEMY_DATABASE_URI=mysql://root:root@db/projects
+      - SQLALCHEMY_TRACK_MODIFICATIONS=False
+    networks:
+      - my_network
+
+networks:
+  my_network:
+
+# docker compose -f docker-compose-2.yml up
+# docker compose -f docker-compose-2.yml down

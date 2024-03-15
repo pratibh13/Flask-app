@@ -1,0 +1,27 @@
+version: '3.8'
+ 
+services:
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: projects
+      MYSQL_USER: pratibh
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - my_network
+    container_name: db
+ 
+networks:
+  my_network:
+ 
+volumes:
+  mysql_data:
+
+# docker compose -f docker-compose-1.yml up
+# docker compose -f docker-compose-1.yml down

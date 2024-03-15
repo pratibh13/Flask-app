@@ -4,8 +4,10 @@
 # `app.run()` method with the debug mode set based on the value of `config.debug`.
 from app import app
 import config
-
+# from app.Database.database import db
+ 
 # if __name__ == '__main__':
 #  app.run(debug=config.debug)    
 def create_app():
+   # db.create_all()
    return app
