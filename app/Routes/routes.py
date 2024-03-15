@@ -24,7 +24,7 @@ employee_model=api.model('Employee',{
 }) 
  
 
-project_model = api.model('Project', {
+project_employee_model = api.model('Project', {
     'id': fields.Integer(description='The project unique identifier'),
     'name': fields.String(description='The project name'),
     'employees': fields.List(fields.Nested({
@@ -71,7 +71,7 @@ class Employee(Resource):
 @api.route("/<int:id>")
 @api.param('id', 'The Employee identifier')
 @api.response(404, 'Employee not found')
-class Project(Resource): 
+class Employee(Resource): 
     
     @api.doc('Delete_employee_by_id')
     @api.response(204, 'Employee deleted')
@@ -112,7 +112,7 @@ class Project(Resource):
 @api.param('id', 'The project identifier')
 @api.response(404, 'Project or employees of the project not found')
 class projectEmployees(Resource):
-    @api.marshal_with(project_model)
+    @api.marshal_with(project_employee_model)
     def get(self, id):
         project = project_service.get_project_by_id(id)
         if project:
