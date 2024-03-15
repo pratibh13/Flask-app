@@ -5,5 +5,7 @@
 from app import app
 import config
 
-if __name__ == '__main__':
- app.run(debug=config.debug)    
+# if __name__ == '__main__':
+#  app.run(debug=config.debug)    
+def create_app():
+   return app
